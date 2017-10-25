@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:form>
+        <p:messages autoUpdate="true" showDetail="true"></p:messages>
+        <p:fieldset legend="Gerenciar Usuário">
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Novo" action="#{alunoBean.novo()}" update="@form"></p:commandButton>
+                    <p:commandButton value="Salvar" action="#{alunoBean.salvar()}" disabled="#{alunoBean.busca == true}" update="@form"></p:commandButton>
+                    <p:commandButton value="Buscar" action="#{alunoBean.buscar()}" update="@form"></p:commandButton>
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:panelGrid columns="8" rendered="#{alunoBean.busca == false}">
+
+                <p:inputText value="#{alunoBean.entidade.nome}">Nome: </p:inputText>
+                <p:inputText value="#{alunoBean.entidade.prontuario}">Prontuário: </p:inputText>
+                <p:inputMask value="#{alunoBean.entidade.dataNascimento}" mask="9999/99/99">Data de Nascimento: </p:inputMask>
+                <p:inputText value="#{alunoBean.entidade.fkCurso}">Curso: </p:inputText>
+                <p:inputText value="#{cidadeBean.buscaCidade(entidade.cidade)}">Cidade: </p:inputText>
+    
+
+       
+                
+                <h:outputLabel></h:outputLabel>
+            </p:panelGrid>
+            <p:dataTable value="#{alunoBean.entidades}" var="u" rendered="#{alunoBean.busca == true}">
+                <p:column>
+                    <p:commandButton value="Editar" action="#{alunoBean.editar(u)}" update="@form"></p:commandButton>
+                    <p:commandButton value="Deletar" action="#{alunoBean.deletar(u)}" update="@form"></p:commandButton>
+                </p:column>
+                <p:column headerText="Nome">
+                    #{u.nome}
+                </p:column>
+                <p:column headerText="Prontuario">
+                    #{u.prontuario}
+                </p:column>
+                <p:column headerText="Data de Nascimento">
+                    #{u.dataNascimento}
+                </p:column>
+                <p:column headerText="Curso">
+                    #{u.fkCurso}
+                </p:column>
+                <p:column headerText="Cidade">
+                    #{u.fkCidade}
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </h:form>
+
+</ui:decorate>
+
