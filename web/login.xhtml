@@ -28,7 +28,7 @@ and open the template in the editor.
  
             <h:outputLabel for="password" value="Password:" />
             <p:password id="password" value="#{loginBean.pwd}" required="true" label="password" />
- 
+             <h:message for="date" styleClass="errorMessage"/> 
             <f:facet name="footer">
                 <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
                                  oncomplete="handleLoginRequest(xhr, status, args)" />

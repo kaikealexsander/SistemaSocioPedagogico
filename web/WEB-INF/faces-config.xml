@@ -16,5 +16,15 @@ and open the template in the editor.
 			<to-view-id>/admin.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+         <application>
+             <locale-config>
+                 <default-locale>pt_BR</default-locale>
+             </locale-config>
+             <resource-bundle>
+                 <base-name>resources.Messages</base-name>
+                 <var>msgs</var>
+             </resource-bundle>
+         </application>
+   
 
 </faces-config>

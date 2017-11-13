@@ -8,6 +8,7 @@ package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class FabricaConexao {
     
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc:mysql://localhost/db_projeto";
+    private static final String URL_CONEXAO = "jdbc:mysql://kabrom.zapto.org:3306/db_projeto";
     private static final String USUARIO = "root";
     private static final String SENHA = "";
 
@@ -26,8 +27,11 @@ public class FabricaConexao {
                 Class.forName("com.mysql.jdbc.Driver");
                 conexao = DriverManager.getConnection(URL_CONEXAO, USUARIO, SENHA);
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 throw new ErroSistema("Não foi possível conectar ao banco de dados!", ex);
+                
             } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
                 throw new ErroSistema("O driver do banco de dados não foi encontrado!", ex);
             }
         }
@@ -40,6 +44,7 @@ public class FabricaConexao {
                 conexao.close();
                 conexao = null;
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 throw new ErroSistema("Erro ao fechar conexão com o banco de dados!", ex);
             }
         }

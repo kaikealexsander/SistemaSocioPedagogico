@@ -70,23 +70,32 @@ public class LoginBean implements Serializable {
         FacesMessage message = null;
         boolean loggedIn = false;
          
-        boolean valid = ServidorDAO.validate(user, encriptaSenha(pwd));
+        try {
+             boolean valid = ServidorDAO.validate(user, encriptaSenha(pwd));
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", user);
                         loggedIn = true;
-                        message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", user);
-            
-			validateUsernamePassword = "admin";
-                        
+                        message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo ", user);
+                        validateUsernamePassword = "admin";
         } else {
                     loggedIn = false;
-                    message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+                    message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro no acesso", "Usuario/senha inexistente");
                     validateUsernamePassword =  "login";
         }
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("loggedIn", loggedIn);
+            
+               // adicionarMensagem("Não temos nada cadastrado!", FacesMessage.SEVERITY_WARN);
+            
+        } catch (ErroSistema ex) {
+            Logger.getLogger(CrudBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagem(ex.getMessage(), FacesMessage.SEVERITY_ERROR);
+        }
+        
+        
+       
    /*     try {
                 Thread.sleep(2000);
                 FacesContext.getCurrentInstance().getExternalContext().redirect("admin.jsf");
@@ -95,7 +104,10 @@ public class LoginBean implements Serializable {
             }
         */
     }
-        
+        public void adicionarMensagem(String mensagem, FacesMessage.Severity tipoErro){
+        FacesMessage fm = new FacesMessage(tipoErro, mensagem, null);
+        FacesContext.getCurrentInstance().addMessage(null, fm);
+    }
         
 	//validate login
 	

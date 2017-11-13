@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import model.Servidor;
 import util.ErroSistema;
 import util.FabricaConexao;
@@ -39,6 +40,7 @@ public class ServidorDAO implements CrudDAO<Servidor> {
 			}
 		} catch (SQLException ex) {
 			System.out.println("Login error -->" + ex.getMessage());
+                        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "ERRO: "+ex.getMessage());
 			return false;
 		} finally {
                     FabricaConexao.fecharConexao();
