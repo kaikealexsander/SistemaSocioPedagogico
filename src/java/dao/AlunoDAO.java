@@ -60,7 +60,7 @@ public class AlunoDAO implements CrudDAO<Aluno> {
                 ps.setInt(4, entidade.getFkCidade());
                 ps.setInt(5, entidade.getFkPessoa());
                 ps.execute();
-                //to change -- corrigir implementasao e colocar executeupdate();
+                
                 ps = conexao.prepareStatement("UPDATE tb_aluno SET fkCurso=?, fkPeriodo=?,  fkArquivo=? where pkAluno=?");
                 ps.setInt(1, entidade.getFkCurso());
                 ps.setInt(2, entidade.getFkPeriodo());

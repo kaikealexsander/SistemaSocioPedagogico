@@ -32,5 +32,6 @@ public class AlunoBean extends CrudBean<Aluno, AlunoDAO> {
     public Aluno criarNovaEntidade() {
         return new Aluno();
     }
-          
+    
+   
 }
