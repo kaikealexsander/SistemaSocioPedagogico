@@ -6,9 +6,17 @@
 package bean;
 
 import dao.AlunoDAO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import model.Aluno;
+import model.Curso;
+import org.primefaces.context.RequestContext;
+import util.ErroSistema;
+
+
 
 @ManagedBean
 @SessionScoped
@@ -17,7 +25,7 @@ import model.Aluno;
  *
  * @author kaikealexsander
  */
-public class AlunoBean extends CrudBean<Aluno, AlunoDAO> {
+public class AlunoBean extends CrudBean<Aluno, AlunoDAO> implements java.io.Serializable{
 
   private AlunoDAO alunoDAO;
    @Override
@@ -33,5 +41,35 @@ public class AlunoBean extends CrudBean<Aluno, AlunoDAO> {
         return new Aluno();
     }
     
-   
+//     public void setService(AlunoService service) {
+//        this.service = service;
+//    }
+     
+    public void selectAlunoFromDialog(Aluno aluno) {
+        RequestContext.getCurrentInstance().closeDialog(aluno);
+    }
+  
+/*    public List getOpcoesEmpresas() {
+
+List opcoes = new ArrayList();
+
+for (Curso empresaUsuario : cursoDAO.getNomes()) {
+opcoes.add(empresaUsuario.getNomes());
+}
+
+return opcoes;
+}*/
+    
+    public void pesquisa(){
+        List<Aluno> entidades = null;
+    try {
+            entidades = getDao().buscar();
+            if(entidades == null || entidades.size() < 1){
+                adicionarMensagem("Não temos nada cadastrado!", FacesMessage.SEVERITY_WARN);
+            }
+        } catch (ErroSistema ex) {
+           // Logger.getLogger(CrudBean.class.getName()).log(Level.SEVERE, null, ex);
+            //adicionarMensagem(ex.getMessage(), FacesMessage.SEVERITY_ERROR);
+        }
+    }
 }

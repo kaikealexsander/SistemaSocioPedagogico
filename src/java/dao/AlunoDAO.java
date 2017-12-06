@@ -7,6 +7,7 @@ package dao;
 
 import dao.CrudDAO;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,14 +38,14 @@ public class AlunoDAO implements CrudDAO<Aluno> {
             Connection conexao = FabricaConexao.getConexao();
             PreparedStatement ps;
             if(entidade.getPkAluno()== null){
-                ps = conexao.prepareStatement("INSERT INTO tb_pessoa (pkPessoa, prontuario, nome, dataNascimento, cidade ) VALUES (0,?,?,?,?)");
+                ps = conexao.prepareStatement("INSERT INTO tb_pessoa (pk_pessoa, prontuario, nome, dataNascimento, cidade ) VALUES (0,?,?,?,?)");
                 ps.setString(1, entidade.getProntuario());
                 ps.setString(2, entidade.getNome());
-                ps.setDate(3, entidade.getDataNascimento());
+                ps.setDate(3, (Date) entidade.getDataNascimento());
                 ps.setInt(4, entidade.getFkCidade());
                 int id = ps.executeUpdate(); //retorna o ultimo id inserido.
                 
-                ps = conexao.prepareStatement("INSERT INTO tb_aluno(pkAluno, fkPessoa, fkCurso, fkPeriodo, fkArquivo) VALUES (0,?,?,?,?)");
+                ps = conexao.prepareStatement("INSERT INTO tb_aluno(pk_aluno, fk_pessoa, fk_curso, fk_periodo, fk_arquivo) VALUES (0,?,?,?,?)");
                 
                 ps.setInt(1, id);
                 ps.setInt(2, entidade.getFkCurso());
@@ -53,19 +54,19 @@ public class AlunoDAO implements CrudDAO<Aluno> {
                 ps.execute();
                                  
             } else {
-                ps = conexao.prepareStatement("UPDATE tb_pessoa SET prontuario=?, nome=?, dataNascimento=?, cidade=? where pkPessoa=?");
+                ps = conexao.prepareStatement("UPDATE tb_pessoa SET prontuario=?, nome=?, dataNascimento=?, cidade=? where pk_pessoa=?");
                 ps.setString(1, entidade.getProntuario());
                 ps.setString(2, entidade.getNome());
-                ps.setDate(3, entidade.getDataNascimento());
+                ps.setDate(3, new Date(entidade.getDataNascimento().getTime()));
                 ps.setInt(4, entidade.getFkCidade());
                 ps.setInt(5, entidade.getFkPessoa());
                 ps.execute();
                 
-                ps = conexao.prepareStatement("UPDATE tb_aluno SET fkCurso=?, fkPeriodo=?,  fkArquivo=? where pkAluno=?");
+                ps = conexao.prepareStatement("UPDATE tb_aluno SET fk_curso=?, fk_periodo=?,  fk_arquivo=? where pk_aluno=?");
                 ps.setInt(1, entidade.getFkCurso());
                 ps.setInt(2, entidade.getFkPeriodo());
                 ps.setInt(3, entidade.getFkArquivo());
-                ps.setInt(4,entidade.getPkAluno());
+                ps.setInt(4, entidade.getPkAluno());
                 ps.execute();
             }
             
@@ -107,6 +108,7 @@ public class AlunoDAO implements CrudDAO<Aluno> {
                 aluno.setNome(resultSet.getString("nome"));
                 aluno.setDataNascimento(resultSet.getDate("data_nascimento"));
                 aluno.setProntuario(resultSet.getString("prontuario"));
+                aluno.setFkCidade(resultSet.getInt("fk_cidade"));
                 alunos.add(aluno);
             }
             FabricaConexao.fecharConexao();
@@ -124,6 +126,11 @@ public class AlunoDAO implements CrudDAO<Aluno> {
 
     @Override
     public List<Aluno> buscar(Aluno entidade) throws ErroSistema {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Aluno busca(int c) throws ErroSistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

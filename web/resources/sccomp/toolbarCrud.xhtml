@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="crudBean" required="true" shortDescription="Uma classe qualquer que extenda o crudBean" ></cc:attribute>
+        <cc:attribute name="crudBeanTarget" required="true" shortDescription="Uma classe qualquer que extenda o crudBean" ></cc:attribute>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+       <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton value="Novo" icon="ui-icon-document" action="#{cc.attrs.crudBean.novo()}" update="@form"></p:commandButton>
+
+                <p:growl id="message" showDetail="true" />
+
+                <p:commandButton value="Salvar" action="#{cc.attrs.crudBean.salvar}" update="message" icon="ui-icon-disk"  disabled="#{cc.attrs.crudBean.busca == true}" >
+                    <f:setPropertyActionListener  
+                        target="#{cc.attrs.crudBeanTarget}" value="#{cc.attrs.crudBeanTarget}" />   
+                    <p:confirm header="Confirmação" message="Salvar alterações?" icon="ui-icon-alert" />
+                </p:commandButton>
+                <p:commandButton value="Buscar" icon="ui-icon-search" action="#{cc.attrs.crudBean.buscar()}" update="@form"></p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </p:confirmDialog>
+                <!--
+                 <p:commandButton value="Limpar Campos" update="@form" process="@this" rendered="#{cc.attrs.crudBean.busca == false}">
+                <p:resetInput target="dpanel" />
+                 </p:commandButton>-->
+
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
+                <cc:insertChildren></cc:insertChildren>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </cc:implementation>
+</html>

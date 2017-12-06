@@ -17,9 +17,10 @@ import javax.faces.application.FacesMessage;
 public class FabricaConexao {
     
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc:mysql://kabrom.zapto.org:3306/db_projeto";
-    private static final String USUARIO = "root";
-    private static final String SENHA = "";
+    //private static final String URL_CONEXAO = "jdbc:mysql://localhost:3306/db_projeto";
+    private static final String URL_CONEXAO = "jdbc:mysql://db-trabajo.mysql.uhserver.com:3306/db_trabajo";
+    private static final String USUARIO = "trabajo";
+    private static final String SENHA = "killerbee@7356";
 
     public static Connection getConexao() throws ErroSistema {
         if(conexao == null){

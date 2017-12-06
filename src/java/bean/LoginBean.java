@@ -26,6 +26,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
+import model.Servidor;
 import org.primefaces.context.RequestContext;
 import util.ErroSistema;
 import util.SessionUtils;
@@ -33,6 +35,7 @@ import util.SessionUtils;
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
+    private Servidor servidor;
 
     private String validateUsernamePassword;
 	private static final long serialVersionUID = 1094801825228386363L;
@@ -152,4 +155,6 @@ public class LoginBean implements Serializable {
         String senha = hexString.toString();
         return senha;
     }
+
+
 }

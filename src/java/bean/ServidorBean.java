@@ -5,26 +5,35 @@
  */
 package bean;
 
-import dao.CrudDAO;
 import dao.ServidorDAO;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import model.Servidor;
+
+
+
+@ManagedBean
+@SessionScoped
 
 /**
  *
  * @author kaikealexsander
  */
-public class ServidorBean extends CrudBean<Servidor, ServidorDAO>{
-    
-    @Override
+public class ServidorBean extends CrudBean<Servidor, ServidorDAO> implements java.io.Serializable{
+
+  private ServidorDAO servidorDAO;
+   @Override
     public ServidorDAO getDao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(servidorDAO == null){
+            servidorDAO = new ServidorDAO();
+        }
+        return servidorDAO;
     }
 
     @Override
     public Servidor criarNovaEntidade() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Servidor();
     }
     
-    
-    
+   
 }

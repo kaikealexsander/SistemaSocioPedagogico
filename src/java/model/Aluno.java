@@ -21,6 +21,7 @@ public class Aluno extends Pessoa{
     public Aluno() {
     }
 
+ 
     public Aluno(Integer pkAluno, int fkPessoa, int fkCurso, int fkPeriodo, int fkArquivo) {
         this.pkAluno = pkAluno;
         this.fkPessoa = fkPessoa;
@@ -29,7 +30,7 @@ public class Aluno extends Pessoa{
         this.fkArquivo = fkArquivo;
     }
 
-    public Aluno(Integer pkAluno, int fkPessoa, int fkCurso, int fkPeriodo, int fkArquivo, Integer pkPessoa, String prontuario, String nome, Date dataNascimento, int fkCidade) {
+    public Aluno(Integer pkAluno, int fkPessoa, int fkCurso, int fkPeriodo, int fkArquivo, Integer pkPessoa, String prontuario, String nome, java.util.Date dataNascimento, int fkCidade) {
         super(pkPessoa, prontuario, nome, dataNascimento, fkCidade);
         this.pkAluno = pkAluno;
         this.fkPessoa = fkPessoa;
@@ -46,6 +47,7 @@ public class Aluno extends Pessoa{
         this.pkAluno = pkAluno;
     }
 
+   
     public int getFkPessoa() {
         return fkPessoa;
     }
@@ -77,6 +79,8 @@ public class Aluno extends Pessoa{
     public void setFkArquivo(int fkArquivo) {
         this.fkArquivo = fkArquivo;
     }
-    
+
+   
+
     
 }

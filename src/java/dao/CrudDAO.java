@@ -19,5 +19,6 @@ public interface CrudDAO<E> {//E representa a entidade model
     public List<E> buscar()throws ErroSistema;
     public List<E> buscar(int c)throws ErroSistema;
     public List<E> buscar(E entidade)throws ErroSistema;
+    public E busca(int c)throws ErroSistema;
     
 }

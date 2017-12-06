@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:sc="http://xmlns.jcp.org/jsf/composite/sccomp">
+
+    <h:form>
+        <p:messages autoUpdate="true" showDetail="true"></p:messages>
+        <p:fieldset legend="Memorandos">
+            <sc:toolbarCrud crudBean="#{memorandoBean}" crudBeanTarget="#{memorandoBean.entidades}">
+                
+            </sc:toolbarCrud>
+            <p:panelGrid columns="2" rendered="#{memorandoBean.busca == false}" id="dpanel">
+                <h:outputLabel value="Codigo"></h:outputLabel>
+                <p:inputText value="#{memorandoBean.entidade.pkMemorando}"></p:inputText>
+
+                <h:outputLabel value=" Data de envio"></h:outputLabel>
+                <p:calendar value="#{memorandoBean.entidade.dataEnvio}"></p:calendar>
+
+                <h:outputLabel value="Data de recebimento"></h:outputLabel>
+                <p:calendar value="#{memorandoBean.entidade.dataRecebimento}"></p:calendar>
+
+                <h:outputLabel value="Anexo"></h:outputLabel>
+                <p:fileUpload fileUploadListener="#{fileUploadMB.doUpload}" label="Procurar..." auto="true"/>
+        
+               
+            </p:panelGrid>
+            <p:dataTable value="#{memorandoBean.entidades}" var="memorando" rendered="#{memorandoBean.busca == true}">
+                <p:column>
+                    <p:commandButton value="Editar" action="#{memorandoBean.editar(memorando)}" update="@form"></p:commandButton>
+                    <p:commandButton value="Deletar" action="#{memorandoBean.deletar(memorando)}" update="@form"></p:commandButton>
+                </p:column>
+                <p:column headerText="Nome" sortBy="#{memorando.nome}">
+                    <h:outputText value="#{memorando.nome}"></h:outputText>
+                </p:column>
+                <p:column headerText="Cidade" sortBy="#{memorando.fkCidade}">
+                    <h:outputText value="#{memorando.fkCidade}"></h:outputText>
+                </p:column>
+                <p:column headerText="Cargo" sortBy="#{memorando.fkCargo}">
+                    <h:outputText value="#{memorando.fkCargo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Data Nasc." sortBy="#{memorando.dataNascimento}">
+                    <h:outputText value="#{memorando.dataNascimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </h:form>
+</ui:decorate>
+

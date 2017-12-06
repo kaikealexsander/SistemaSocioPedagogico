@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author kaikealexsander
  */
-public class Servidor {
+public class Servidor extends Pessoa{
     
     private Integer pkServidor;
     private int fkPessoa;
@@ -20,6 +22,14 @@ public class Servidor {
     }
 
     public Servidor(Integer pkServidor, int fkPessoa, int fkCargo, String senha) {
+        this.pkServidor = pkServidor;
+        this.fkPessoa = fkPessoa;
+        this.fkCargo = fkCargo;
+        this.senha = senha;
+    }
+
+    public Servidor(Integer pkServidor, int fkPessoa, int fkCargo, String senha, Integer pkPessoa, String prontuario, String nome, Date dataNascimento, int fkCidade) {
+        super(pkPessoa, prontuario, nome, dataNascimento, fkCidade);
         this.pkServidor = pkServidor;
         this.fkPessoa = fkPessoa;
         this.fkCargo = fkCargo;

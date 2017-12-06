@@ -17,17 +17,17 @@ public class Memorando {
     private String numero;
     private Date dataEnvio;
     private Date dataRecebimento;
-    private Integer pkArquivo;
+    private Integer fk_arquivo;
 
     public Memorando() {
     }
 
-    public Memorando(Integer pkMemorando, String numero, Date dataEnvio, Date dataRecebimento, Integer pkArquivo) {
+    public Memorando(Integer pkMemorando, String numero, Date dataEnvio, Date dataRecebimento, Integer fk_arquivo) {
         this.pkMemorando = pkMemorando;
         this.numero = numero;
         this.dataEnvio = dataEnvio;
         this.dataRecebimento = dataRecebimento;
-        this.pkArquivo = pkArquivo;
+        this.fk_arquivo = fk_arquivo;
     }
 
     public Integer getPkMemorando() {
@@ -62,12 +62,12 @@ public class Memorando {
         this.dataRecebimento = dataRecebimento;
     }
 
-    public Integer getPkArquivo() {
-        return pkArquivo;
+    public Integer getFkArquivo() {
+        return fk_arquivo;
     }
 
-    public void setPkArquivo(Integer pkArquivo) {
-        this.pkArquivo = pkArquivo;
+    public void setFkArquivo(Integer fk_arquivo) {
+        this.fk_arquivo = fk_arquivo;
     }
     
 }

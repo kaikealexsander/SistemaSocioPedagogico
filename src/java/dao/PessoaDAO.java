@@ -61,5 +61,10 @@ public class PessoaDAO implements CrudDAO<Pessoa>{
     public List<Pessoa> buscar(Pessoa entidade) throws ErroSistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Pessoa busca(int c) throws ErroSistema {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

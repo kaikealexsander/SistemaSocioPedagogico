@@ -15,9 +15,18 @@ import util.ErroSistema;
  * @author kaikealexsander
  */
 public class CidadeBean extends CrudBean<Cidade,CidadeDAO>{
+    private Cidade cidade;
 
+    public CidadeBean() {
+        cidade = new Cidade();
+    }
     
         private CidadeDAO cidadeDAO;
+
+    private CidadeBean(Cidade cidade) {
+        this.cidade = cidade;
+    }
+    
     @Override
     public CidadeDAO getDao() {
           if(cidadeDAO == null){
@@ -34,6 +43,11 @@ public class CidadeBean extends CrudBean<Cidade,CidadeDAO>{
         return new Cidade();
     }
     
+     public CidadeBean busca(int chave) throws ErroSistema {
+       cidade = new Cidade();
+       cidade = cidadeDAO.busca(chave);
+        return new CidadeBean(cidade);
+    }
 
 }
 

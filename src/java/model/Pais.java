@@ -47,5 +47,9 @@ public class Pais {
         this.sigla = sigla;
     }
 
+    public void setCodigo(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
