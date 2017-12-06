@@ -25,6 +25,11 @@ and open the template in the editor.
                  <var>msgs</var>
              </resource-bundle>
          </application>
+         <managed-bean>
+        <managed-bean-name>CidadeBean</managed-bean-name>
+        <managed-bean-class>bean.cidadeBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
    
 
 </faces-config>

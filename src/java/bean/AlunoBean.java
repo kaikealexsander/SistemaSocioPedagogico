@@ -26,7 +26,7 @@ import util.ErroSistema;
  * @author kaikealexsander
  */
 public class AlunoBean extends CrudBean<Aluno, AlunoDAO> implements java.io.Serializable{
-
+     
   private AlunoDAO alunoDAO;
    @Override
     public AlunoDAO getDao() {
@@ -49,17 +49,7 @@ public class AlunoBean extends CrudBean<Aluno, AlunoDAO> implements java.io.Seri
         RequestContext.getCurrentInstance().closeDialog(aluno);
     }
   
-/*    public List getOpcoesEmpresas() {
-
-List opcoes = new ArrayList();
-
-for (Curso empresaUsuario : cursoDAO.getNomes()) {
-opcoes.add(empresaUsuario.getNomes());
-}
-
-return opcoes;
-}*/
-    
+   
     public void pesquisa(){
         List<Aluno> entidades = null;
     try {
@@ -71,5 +61,7 @@ return opcoes;
            // Logger.getLogger(CrudBean.class.getName()).log(Level.SEVERE, null, ex);
             //adicionarMensagem(ex.getMessage(), FacesMessage.SEVERITY_ERROR);
         }
+    return ;
     }
+    
 }

@@ -50,4 +50,3 @@ public class CidadeBean extends CrudBean<Cidade,CidadeDAO>{
     }
 
 }
-

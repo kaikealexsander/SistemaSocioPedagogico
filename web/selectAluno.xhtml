@@ -9,7 +9,9 @@
 
     
     <h:form>
-             <p:dataTable value="#{alunoBean.entidades}" var="aluno">
+      <p:commandButton value="Buscar" icon="ui-icon-search" action="#{alunoBean.buscar()}" update="@form"></p:commandButton>
+
+        <p:dataTable value="#{alunoBean.entidades}" var="aluno" paginator="true" rendered="true" emptyMessage="Nenhum registro encontrado!!!">
                    
                 
                 <p:column headerText="ID" sortBy="#{aluno.pkAluno}">

@@ -22,8 +22,13 @@ public abstract class CrudBean<E, D extends CrudDAO> {
 
     private String estadoTela = "buscar";//Inserir, Editar, Buscar
     
-    private E entidade = null;
-    private List<E> entidades = null;
+    public CrudBean()
+    {
+        estadoTela = "buscar";
+    }
+    
+    private E entidade;
+    private List<E> entidades;
     
     public void novo(){
         entidade =  criarNovaEntidade();
@@ -60,7 +65,7 @@ public abstract class CrudBean<E, D extends CrudDAO> {
     public void buscar(){
         if(isBusca() == false){
            mudarParaBusca();
-           return;
+           return; //??
         }
         try {
             entidades = getDao().buscar();
@@ -105,6 +110,7 @@ public abstract class CrudBean<E, D extends CrudDAO> {
     }
 
     public List<E> getEntidades() {
+        buscar();
         return entidades;
     }
 
