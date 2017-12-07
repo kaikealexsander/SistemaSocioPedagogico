@@ -21,13 +21,10 @@
                 <p:column headerText="Nome" sortBy="#{aluno.nome}">
                     <h:outputText value="#{aluno.nome}"></h:outputText>
                 </p:column>
-                <p:column headerText="Cidade" sortBy="#{aluno.fkCidade}">
-                    <h:outputText value="#{aluno.fkCidade}"></h:outputText>
+            <p:column headerText="Cidade" sortBy="#{cidadeBean.cidade.nome}">
+                <h:outputText value="#{cidadeBean.consultar(aluno.fkCidade).cidade.nome}"></h:outputText>
                 </p:column>
-                <p:column headerText="Cidade--">
-                    <h:outputText value="#{cidadeBean.busca(aluno.fkCidade)}"></h:outputText>
-                </p:column>
-                <p:column headerText="Curso" sortBy="#{aluno.fkcurso}">
+                <p:column headerText="Curso" sortBy="#{aluno.fkCurso}">
                     <h:outputText value="#{aluno.fkCurso}"></h:outputText>
                 </p:column>
                 <p:column headerText="Data Nasc." sortBy="#{aluno.dataNascimento}">

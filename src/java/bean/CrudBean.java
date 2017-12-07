@@ -18,7 +18,7 @@ import util.ErroSistema;
  * @author kaikealexsander
  */
 
-public abstract class CrudBean<E, D extends CrudDAO> {
+public abstract class CrudBean<E, D extends CrudDAO> implements java.io.Serializable{
 
     private String estadoTela = "buscar";//Inserir, Editar, Buscar
     

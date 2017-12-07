@@ -84,8 +84,8 @@ public class CidadeDAO implements CrudDAO<Cidade> {
     }
 
     
-    @Override
-       public Cidade busca(int codigo) throws ErroSistema {
+    
+       public Cidade busca(Integer codigo) throws ErroSistema {
         int c = codigo;
       try {
             Connection conexao = FabricaConexao.getConexao();
@@ -133,6 +133,11 @@ public class CidadeDAO implements CrudDAO<Cidade> {
         } catch (SQLException ex) {
             throw new ErroSistema("Erro ao buscar os cidades!",ex);
         }
+    }
+
+    @Override
+    public Cidade busca(int c) throws ErroSistema {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
  

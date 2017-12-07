@@ -13,16 +13,16 @@ import java.sql.Date;
  */
 public class Aluno extends Pessoa{
     private Integer pkAluno;
-    private int fkPessoa;
-    private int fkCurso;
-    private int fkPeriodo;
-    private int fkArquivo;
+    private Integer fkPessoa;
+    private Integer fkCurso;
+    private Integer fkPeriodo;
+    private Integer fkArquivo;
 
     public Aluno() {
     }
 
  
-    public Aluno(Integer pkAluno, int fkPessoa, int fkCurso, int fkPeriodo, int fkArquivo) {
+    public Aluno(Integer pkAluno, Integer fkPessoa, Integer fkCurso, Integer fkPeriodo, Integer fkArquivo) {
         this.pkAluno = pkAluno;
         this.fkPessoa = fkPessoa;
         this.fkCurso = fkCurso;
@@ -30,7 +30,7 @@ public class Aluno extends Pessoa{
         this.fkArquivo = fkArquivo;
     }
 
-    public Aluno(Integer pkAluno, int fkPessoa, int fkCurso, int fkPeriodo, int fkArquivo, Integer pkPessoa, String prontuario, String nome, java.util.Date dataNascimento, int fkCidade) {
+    public Aluno(Integer pkAluno, Integer fkPessoa, Integer fkCurso, Integer fkPeriodo, Integer fkArquivo, Integer pkPessoa, String prontuario, String nome, java.util.Date dataNascimento, Integer fkCidade) {
         super(pkPessoa, prontuario, nome, dataNascimento, fkCidade);
         this.pkAluno = pkAluno;
         this.fkPessoa = fkPessoa;
@@ -48,35 +48,35 @@ public class Aluno extends Pessoa{
     }
 
    
-    public int getFkPessoa() {
+    public Integer getFkPessoa() {
         return fkPessoa;
     }
 
-    public void setFkPessoa(int fkPessoa) {
+    public void setFkPessoa(Integer fkPessoa) {
         this.fkPessoa = fkPessoa;
     }
 
-    public int getFkCurso() {
+    public Integer getFkCurso() {
         return fkCurso;
     }
 
-    public void setFkCurso(int fkCurso) {
+    public void setFkCurso(Integer fkCurso) {
         this.fkCurso = fkCurso;
     }
 
-    public int getFkPeriodo() {
+    public Integer getFkPeriodo() {
         return fkPeriodo;
     }
 
-    public void setFkPeriodo(int fkPeriodo) {
+    public void setFkPeriodo(Integer fkPeriodo) {
         this.fkPeriodo = fkPeriodo;
     }
 
-    public int getFkArquivo() {
+    public Integer getFkArquivo() {
         return fkArquivo;
     }
 
-    public void setFkArquivo(int fkArquivo) {
+    public void setFkArquivo(Integer fkArquivo) {
         this.fkArquivo = fkArquivo;
     }
 

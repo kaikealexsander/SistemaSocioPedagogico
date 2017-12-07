@@ -19,10 +19,10 @@
                 <p:inputText value="#{alunoBean.entidade.nome}"></p:inputText>
 
                 <h:outputLabel value=" Cidade"></h:outputLabel>
-                <p:inputText value="#{alunoBean.entidade.fkCidade}"></p:inputText>
-
+                <p:inputText value="#{alunoBean.entidade.fkCidade}" disabled="true" >Botão</p:inputText>
+                
                 <h:outputLabel value="Curso"></h:outputLabel>
-                <p:inputText value="#{alunoBean.entidade.fkCurso}"></p:inputText>
+                <p:inputText value="#{alunoBean.entidade.fkCurso}" disabled="true" >botão</p:inputText>
 
                 <h:outputLabel value="Data Nasc."></h:outputLabel>
                 <p:calendar value="#{alunoBean.entidade.dataNascimento}" ></p:calendar>
@@ -42,8 +42,8 @@
                 <p:column headerText="Nome" sortBy="#{aluno.nome}">
                     <h:outputText value="#{aluno.nome}"></h:outputText>
                 </p:column>
-                <p:column headerText="Cidade" sortBy="#{aluno.fkCidade}">
-                    <h:outputText value="#{aluno.fkCidade}"></h:outputText>
+                <p:column headerText="Cidade" sortBy="#{cidadeBean.cidade.nome}">
+                <h:outputText value="#{cidadeBean.consultar(aluno.fkCidade).cidade.nome}"></h:outputText>
                 </p:column>
                 <p:column headerText="Curso" sortBy="#{aluno.fkcurso}">
                     <h:outputText value="#{aluno.fkCurso}"></h:outputText>
