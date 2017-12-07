@@ -7,6 +7,8 @@ package bean;
 
 import dao.CidadeDAO;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import model.Cidade;
 import util.ErroSistema;
 
@@ -14,6 +16,8 @@ import util.ErroSistema;
  *
  * @author kaikealexsander
  */
+@ManagedBean
+@SessionScoped
 public class CidadeBean extends CrudBean<Cidade,CidadeDAO>{
     private Cidade cidade;
 
@@ -43,10 +47,11 @@ public class CidadeBean extends CrudBean<Cidade,CidadeDAO>{
         return new Cidade();
     }
     
-     public CidadeBean busca(int chave) throws ErroSistema {
+     public String busca(int chave) throws ErroSistema {
        cidade = new Cidade();
-       cidade = cidadeDAO.busca(chave);
-        return new CidadeBean(cidade);
+       // cidade = cidadeDAO.busca(chave);
+       return "barretos";
+        // return new CidadeBean(cidade);
     }
 
 }

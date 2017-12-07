@@ -25,7 +25,7 @@
                     <h:outputText value="#{aluno.fkCidade}"></h:outputText>
                 </p:column>
                 <p:column headerText="Cidade--">
-                    <h:outputText value="#{cidadeBean.buscar(aluno.fkCidade).cidade.nome}"></h:outputText>
+                    <h:outputText value="#{cidadeBean.busca(aluno.fkCidade)}"></h:outputText>
                 </p:column>
                 <p:column headerText="Curso" sortBy="#{aluno.fkcurso}">
                     <h:outputText value="#{aluno.fkCurso}"></h:outputText>
