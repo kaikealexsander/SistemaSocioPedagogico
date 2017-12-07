@@ -30,6 +30,8 @@ and open the template in the editor.
         <managed-bean-class>bean.cidadeBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <factory>
+        <exception-handler-factory>util.JsfExceptionHandlerFactory</exception-handler-factory>
+    </factory>
    
-
 </faces-config>
