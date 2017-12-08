@@ -20,7 +20,7 @@
         <meta content='©2013 Arthur Assunção' name='copyright'/>
         <title>
             <ui:insert name="titulo_pagina">
-                Sistema de Agendamento de Exames - AgendaExames
+               Sistema para gerenciamento de atendimentos SocioPedagógico - SAS
             </ui:insert>
         </title>
     </h:head>
@@ -36,15 +36,14 @@
                                     <span class='icon-bar'></span>
                                     <span class='icon-bar'></span>
                                 </a>
-                                <h:link styleClass="brand" outcome='/index.jsp' value="AgendaExames" />
+                                <h:link styleClass="brand" outcome='/index.jsp' value="SAS" />
                                 <div class='nav-collapse' id='barra_menu'>
                                     <ul class='nav' id='nav'>
                                         <li><h:link outcome='/index.xhtml'><i class="icon-home icon-white"></i> Início</h:link></li>
-                                        <li><h:link outcome='/user/agenda.xhtml'><i class="icon-book icon-white"></i> Agenda</h:link></li>
-                                        <li><h:link outcome='/user/paciente.xhtml'><i class="icon-user icon-white"></i> Paciente</h:link></li>
-                                        <li><h:link outcome='/user/exame.xhtml'><i class="icon-calendar icon-white"></i> Exame</h:link></li>
-                                        <li><h:link outcome='/user/medico.xhtml'><i class="icon-user icon-white"></i> Medico</h:link></li>
-                                        <li><h:link outcome='/user/consulta_relatorio.xhtml'><i class="icon-list-alt icon-white"></i> Relatório</h:link></li>
+                                        <li><h:link outcome='/gerenciar-aluno.xhtml'><i class="icon-user icon-white"></i> Alunos</h:link></li>
+                                        <li><h:link outcome='/gerenciar-memorando.xhtml'><i class="icon-list icon-white"></i> Memorandos</h:link></li>
+                                        <li><h:link outcome='/gerenciar-servidor.xhtml'><i class="icon-user icon-white"></i> Servidor</h:link></li>
+                                        <!--<li><h:link outcome='/user/consulta_relatorio.xhtml'><i class="icon-list-alt icon-white"></i> Relatório</h:link></li>-->
 
                                         <h:form style="margin-top: 10px; margin-bottom: 0px" class="pull-right">
                                             <h:commandLink action="#{loginBean.logout()}" ><i class="icon-off icon-white"></i> Sair</h:commandLink>
